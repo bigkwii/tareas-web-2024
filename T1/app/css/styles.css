@@ -1,11 +1,14 @@
 body {
-    background-color: #000;
+    background-color: black;
     color: #fff;
-    font: 1em sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font: 2rem sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    background-image: url("../assets/background/lettucedark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 a {
@@ -17,18 +20,67 @@ a:hover {
     color: cornflowerblue;
 }
 
-a:visited {
-    color: magenta;
-}
-
-a:visited:hover {
-    color: blueviolet;
-}
-
 h1, h2, h3, h4, h5, h6 {
     color: #fff;
+    text-align: center;
+    outline-color: #000;
+    outline-width: 2px;
 }
 
 p {
     color: #fff;
+    outline-color: #000;
+    outline-width: 2px;
+}
+
+.nav-bar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    border-bottom: #000 5px solid;
+}
+
+.nav-bar .btn {
+    font: 1.5rem sans-serif;
+    border: 3px solid green;
+}
+
+.btn {
+    background-color: lightgray;
+    color: #000;
+    border: 5px solid green;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: 200ms;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: green;
+    color: #fff;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .menu-section {
+        flex-direction: column;
+    }
 }
