@@ -132,7 +132,7 @@ const displayCheckboxes = (type) => {
 const checkLimit = (checkbox) => {
     const checkedCheckboxes = document.querySelectorAll("input[type='checkbox']:checked");
     if (checkedCheckboxes.length > 5) {
-        alert("No puedes seleccionar más de 5 productos"); // TODO: change this to a modal
+        alertModal("Alerta!", "No puedes seleccionar más de 5 productos.");
         checkbox.checked = false;
     }
 }
@@ -272,10 +272,10 @@ const validateForm = () => {
     console.log("validations: ", validations);
     const isValid = validations.every(validation => validation[0]);
     if (!isValid) {
-        const errorMessage = "Hay errores en el formulario!:\n\n" + validations.map(validation => validation[1]).join("\n");
-        alert(errorMessage);
+        const errorMessage = validations.filter(validation => !validation[0]).map(validation => validation[1]).join("\n");
+        alertModal("Hay errores en el formulario!:", errorMessage);
     } else {
-        alert("Formulario válido! :)");
+        alertModal("Éxito!", "El formulario es válido :)");
     }
 }
 
