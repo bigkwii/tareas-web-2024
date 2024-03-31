@@ -6,9 +6,9 @@ const selectComuna = document.getElementById("comuna");
 
 // -- consts --
 // fruits
-const frutas = ["Manzana", "Plátano", "Naranja", "Pera", "Uva", "Limón", "Mandarina", "Durazno", "Ciruela", "Kiwi", "Frutilla", "Frambuesa", "Arándano", "Mora", "Piña", "Sandía"];
+const frutas = ["Arándano", "Frambuesa", "Frutilla", "Grosella", "Mora", "Limón", "Mandarina", "Naranja", "Pomelo", "Melón", "Sandía", "Palta", "Chirimoya", "Coco", "Dátil", "Kiwi", "Mango", "Papaya", "Piña", "Plátano", "Damasco", "Cereza", "Ciruela", "Higo", "Kaki", "Manzana", "Durazno", "Nectarin", "Níspero", "Pera", "Uva", "Almendra", "Avellana", "Maní", "Castaña", "Nuez", "Pistacho"];
 // vegetables
-const verduras = ["Lechuga", "Tomate", "Zanahoria", "Pepino", "Pimiento", "Cebolla", "Ajo", "Espinaca", "Brócoli", "Coliflor", "Repollo", "Papa", "Camote", "Zapallo", "Choclo", "Arveja"];
+const verduras = ["Brócoli", "Repollo", "Coliflor", "Rábano", "Alcachofa", "Lechuga", "Zapallo", "Pepino", "Haba", "Maíz", "Champiñón", "Acelga", "Apio", "Espinaca", "Perejil", "Ajo", "Cebolla", "Espárrago", "Puerro", "Acelga", "Espinaca", "Remolacha", "Berenjena", "Papa", "Pimiento", "Tomate", "Zanahoria"];
 // region to comunas object
 region_to_comunas = {
     "regiones": [
