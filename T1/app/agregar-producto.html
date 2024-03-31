@@ -30,8 +30,8 @@
         <p>Elegir productos (mínimo 1, máximo 5):</p>
         <div name="productos" id="productos" class="productos-container"></div>
 
-        <p>Descripción:</p>
-        <textarea name="description" id="description" rows="4" cols="50" placeholder="Poner descripción aquí..." spellcheck="true"></textarea>
+        <p>Descripción (opcional):</p>
+        <textarea name="description" id="description" rows="4" cols="50" maxlength="200" placeholder="Poner descripción aquí..." spellcheck="true"></textarea>
 
         <p>Insertar Imágenes (mínimo 1, máximo 3):</p>
         <input type="file" name="image1" id="image1" accept="image/png, image/jpeg">
@@ -65,13 +65,13 @@
         </select>
 
         <p>Nombre del Productor:</p>
-        <input type="text" name="productor" id="productor" size="80" placeholder="...">
+        <input type="text" name="productor" id="productor" size="80" maxlength="80" placeholder="...">
 
         <p>E-Mail:</p>
-        <input type="text" name="email" id="email" size="30" placeholder="...">
+        <input type="text" name="email" id="email" size="30" maxlength="30" placeholder="...">
 
-        <p>Teléfono:</p>
-        <input type="text" name="phone" id="phone" size="15" placeholder="+569...">
+        <p>Teléfono (opcional):</p>
+        <input type="text" name="phone" id="phone" size="15" maxlength="15" placeholder="+569...">
 
         <button type="button" class="btn" id="submit-btn">Agregar Producto</button>
     </form>

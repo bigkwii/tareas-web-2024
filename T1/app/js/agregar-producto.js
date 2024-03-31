@@ -275,7 +275,7 @@ const validateForm = () => {
         const errorMessage = validations.filter(validation => !validation[0]).map(validation => validation[1]).join("\n");
         alertModal("Hay errores en el formulario!:", errorMessage);
     } else {
-        alertModal("Éxito!", "El formulario es válido :)");
+        confirmationModal("El formulario es válido :)", "¿Confirma el registro de este producto?", "Sí, confirmo.", "No, quiero volver al formulario.");
     }
 }
 
