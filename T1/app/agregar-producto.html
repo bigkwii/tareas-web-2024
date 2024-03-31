@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Font+Name&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Font+Name&display=swap" rel="stylesheet"> -->
 </head>
 <body>
     <div class="nav-bar">
@@ -16,72 +16,31 @@
 
         <p>Tipo de producto:</p>
         
-        <label for="fruta">
-            <input type="radio" name="tipo" id="fruta" value="Fruta" onclick="displayForm(this.value)">
+        <label for="fruta" class="radio-container">
             Fruta
+            <input type="radio" name="tipo" id="fruta" value="Fruta" onclick="displayCheckboxes(this.value)">
+            <span class="radio-checkmark"></span>
         </label>
-        <label for="verdura">
-            <input type="radio" name="tipo" id="verdura" value="Verdura" onclick="displayForm(this.value)">
+        <label for="verdura" class="radio-container">
             Verdura
+            <input type="radio" name="tipo" id="verdura" value="Verdura" onclick="displayCheckboxes(this.value)">
+            <span class="radio-checkmark"></span>
         </label>
 
         <p>Elegir productos (mínimo 1, máximo 5):</p>
-        <div id="frutas-container" style="display: none;">
-            <label for="manzana">
-                <input type="checkbox" name="frutas[]" id="manzana" value="Manzana">
-                Manzana
-            </label>
-            <label for="pera">
-                <input type="checkbox" name="frutas[]" id="pera" value="Pera">
-                Pera
-            </label>
-            <label for="platano">
-                <input type="checkbox" name="frutas[]" id="platano" value="Plátano">
-                Plátano
-            </label>
-            <label for="uva">
-                <input type="checkbox" name="frutas[]" id="uva" value="Uva">
-                Uva
-            </label>
-            <label for="sandia">
-                <input type="checkbox" name="frutas[]" id="sandia" value="Sandía">
-                Sandía
-            </label>
-        </div>
-        <div id="verduras-container" style="display: none;">
-            <label for="zanahoria">
-                <input type="checkbox" name="verduras[]" id="zanahoria" value="Zanahoria">
-                Zanahoria
-            </label>
-            <label for="lechuga">
-                <input type="checkbox" name="verduras[]" id="lechuga" value="Lechuga">
-                Lechuga
-            </label>
-            <label for="tomate">
-                <input type="checkbox" name="verduras[]" id="tomate" value="Tomate">
-                Tomate
-            </label>
-            <label for="pepino">
-                <input type="checkbox" name="verduras[]" id="pepino" value="Pepino">
-                Pepino
-            </label>
-            <label for="brocoli">
-                <input type="checkbox" name="verduras[]" id="brocoli" value="Brócoli">
-                Brócoli
-            </label>
-        </div>
+        <div name="productos" id="productos" class="productos-container"></div>
 
         <p>Descripción:</p>
         <textarea name="description" id="description" rows="4" cols="50" placeholder="Poner descripción aquí..." spellcheck="true"></textarea>
 
         <p>Insertar Imágenes (mínimo 1, máximo 3):</p>
-        <input type="file" name="image1" id="image">
-        <input type="file" name="image2" id="image">
-        <input type="file" name="image3" id="image">
+        <input type="file" name="image1" id="image1" accept="image/png, image/jpeg">
+        <input type="file" name="image2" id="image2" accept="image/png, image/jpeg">
+        <input type="file" name="image3" id="image3" accept="image/png, image/jpeg">
 
         <p>Regíon:</p>
-        <select name="region" id="region">
-            <option selected disabled>--</option>
+        <select name="region" id="region" onchange="displayComunas(this.value)" class="dropdown">
+            <option selected value="default" disabled>--</option>
             <option value="I">I - Tarapacá</option>
             <option value="II">II - Antofagasta</option>
             <option value="III">III - Atacama</option>
@@ -97,21 +56,24 @@
             <option value="RM">RM - Metropolitana</option>
             <option value="XIV">XIV - Los Ríos</option>
             <option value="XV">XV - Arica y Parinacota</option>
+            <option value="XVI">XVI - Ñuble</option>
         </select>
         
         <p>Comuna:</p>
-        <!-- TODO: create dropdown menu dynamically-->
+        <select name="comuna" id="comuna" class="dropdown">
+            <option selected value="default" disabled>--</option>
+        </select>
 
         <p>Nombre del Productor:</p>
         <input type="text" name="productor" id="productor" size="80" placeholder="...">
 
         <p>E-Mail:</p>
-        <input type="text" name="email" id="productor" size="30" placeholder="...">
+        <input type="text" name="email" id="email" size="30" placeholder="...">
 
         <p>Teléfono:</p>
-        <input type="text" name="phone" id="phone" size="15" placeholder="...">
+        <input type="text" name="phone" id="phone" size="15" placeholder="+569...">
 
-        <button type="submit" class="btn">Agregar Producto</button>
+        <button type="button" class="btn" id="submit-btn">Agregar Producto</button>
     </form>
 
     <script src="js/agregar-producto.js"></script>
