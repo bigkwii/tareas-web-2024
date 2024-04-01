@@ -161,7 +161,7 @@ const displayComunas = (roman) => {
 // make sure the user selected either frutas or verduras
 const validateType = () => {
     const selectedType = document.querySelector("input[name='tipo']:checked");
-    console.log("selected type: ", selectedType);
+    // console.log("selected type: ", selectedType);
     if (!selectedType) {
         return [false, "Debes seleccionar si tu producto es una fruta o una verdura."];
     }
@@ -171,7 +171,7 @@ const validateType = () => {
 // make sure the number of selected products is between 1 and 5
 const validateProducts = () => {
     const checkedCheckboxes = document.querySelectorAll("input[type='checkbox']:checked");
-    console.log("checked checkboxes: ", checkedCheckboxes);
+    // console.log("checked checkboxes: ", checkedCheckboxes);
     if (checkedCheckboxes.length < 1 || checkedCheckboxes.length > 5) {
         return [false, "Debes seleccionar entre 1 y 5 productos."];
     }
@@ -182,7 +182,7 @@ const validateProducts = () => {
 // (optional)
 const validateDescription = () => {
     const description = document.getElementById("description").value;
-    console.log("description: ", description);
+    // console.log("description: ", description);
     if (description.length > 0 && description.length > 200) {
         return [false, "La descripción debe tener no más de 200 caracteres."];
     }
@@ -194,9 +194,9 @@ const validateImages = () => {
     const image1 = document.getElementById("image1").value;
     const image2 = document.getElementById("image2").value;
     const image3 = document.getElementById("image3").value;
-    console.log("image1: ", image1);
-    console.log("image2: ", image2);
-    console.log("image3: ", image3);
+    // console.log("image1: ", image1);
+    // console.log("image2: ", image2);
+    // console.log("image3: ", image3);
     if (!image1 && !image2 && !image3) {
         return [false, "Debes subir al menos una imagen."];
     }
@@ -206,7 +206,7 @@ const validateImages = () => {
 // make sure the user selected a region
 const validateRegion = () => {
     const region = document.getElementById("region").value;
-    console.log("selected region: ", region);
+    // console.log("selected region: ", region);
     if (!region || region === "default") {
         return [false, "Debes seleccionar una región."];
     }
@@ -216,7 +216,7 @@ const validateRegion = () => {
 // make sure the user selected a comuna
 const validateComuna = () => {
     const comuna = document.getElementById("comuna").value;
-    console.log("selected comuna: ", comuna);
+    // console.log("selected comuna: ", comuna);
     if (!comuna || comuna === "default") {
         return [false, "Debes seleccionar una comuna."];
     }
@@ -226,7 +226,7 @@ const validateComuna = () => {
 // make sure the user added his name and that it's less than 80 chars
 const validateProductor = () => {
     const name = document.getElementById("productor").value;
-    console.log("productor: ", name);
+    // console.log("productor: ", name);
     if (!name || name.length > 80) {
         return [false, "El nombre del productor no puede estar vacío y debe tener menos de 80 caracteres"];
     }
@@ -237,7 +237,7 @@ const validateProductor = () => {
 const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const email = document.getElementById("email").value;
-    console.log("email: ", email);
+    // console.log("email: ", email);
     if (!email || email.length > 30 || !emailRegex.test(email)) {
         return [false, "El email no puede estar vacío, debe tener menos de 30 caracteres y ser un email válido."];
     }
@@ -249,7 +249,7 @@ const validateEmail = () => {
 const validatePhone = () => {
     const phoneRegex = /^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$$/;
     const phone = document.getElementById("phone").value;
-    console.log("phone: ", phone);
+    // console.log("phone: ", phone);
     if (phone.length > 0 && (phone.length > 15 || !phoneRegex.test(phone))) {
         return [false, "El teléfono debe ser un número válido y de no más de 15 carácteres."];
     }
@@ -269,7 +269,7 @@ const validateForm = () => {
         validateEmail(),
         validatePhone()
     ];
-    console.log("validations: ", validations);
+    // console.log("validations: ", validations);
     const isValid = validations.every(validation => validation[0]);
     if (!isValid) {
         const errorMessage = validations.filter(validation => !validation[0]).map(validation => validation[1]).join("\n");

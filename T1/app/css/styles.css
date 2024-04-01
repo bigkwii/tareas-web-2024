@@ -33,6 +33,7 @@ p {
     outline-width: 2px;
 }
 
+/* NAV_BAR */
 .nav-bar {
     display: flex;
     flex-flow: row wrap;
@@ -41,6 +42,8 @@ p {
     background: rgba(0, 0, 0, 0.5);
     padding: 0.5rem;
     border-bottom: #000 5px solid;
+    position: sticky;
+    top: 0;
 }
 
 .nav-bar .btn {
@@ -48,6 +51,7 @@ p {
     border: 3px solid green;
 }
 
+/* BTN */
 .btn {
     background-color: lightgray;
     color: #000;
@@ -64,6 +68,7 @@ p {
     color: #fff;
 }
 
+/* INDEX MENU */
 .menu-container {
     display: flex;
     flex-direction: column;
@@ -92,6 +97,19 @@ p {
     gap: 1rem;
     justify-content: center;
     align-items: center;
+}
+
+/* make sure every element is contained within the viewport */
+@media only screen and (max-width: 700px) {
+    .submit-form {
+        width: 100%;
+    }
+    .submit-form input {
+        max-width: 100%;
+    }
+    .submit-form textarea {
+        max-width: 100%;
+    }
 }
 
 /* RADIO BUTTONS */
@@ -213,19 +231,6 @@ p {
     transform: rotate(45deg);
 }
 
-/* make sure every element is contained within the viewport */
-@media only screen and (max-width: 700px) {
-    .submit-form {
-        width: 100%;
-    }
-    .submit-form input {
-        max-width: 100%;
-    }
-    .submit-form textarea {
-        max-width: 100%;
-    }
-}
-
 /* MODAL */
 .modal {
     display: none;
@@ -265,4 +270,8 @@ p {
     cursor: pointer;
 }
 
-
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        font-size: 1rem;
+    }
+}
