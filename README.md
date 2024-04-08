@@ -13,4 +13,7 @@ Acá explicaré algunas decisiones de diseño que tomé:
 - Como las imágenes necesitaban tener derechos de uso según el enunciado, decidí hacerlas todas yo (excepto el fondo, que es de libre uso), así que espero que perdonen la calidad de dibujo.
 - El enunciado especificaba que todas las páginas excepto `index.html` debían tener un botón para volver a la página principal, sin embargo decidí que `informacion-producto.html` devolviera a `ver-productos.html` y que `información-pedidos.html` devolviera a `ver-pedidos` ya que me parecía más lógico.
 - No estaba seguro si hacer que al hacer click en un producto/pedido se abriera en una nueva pestaña o no. Al final decidí que no, ya que de todas formas se tiene un botón para vovler al listado.
+- Hay mucho código con nombres malos ya que lo hice para la 1era mitad de la tarea, antes de darme cuenta de hasta que punto podía reutilizar código. Le hace falta un refactor bastante extenzo a este proyecto.
+- Por lo mismo, hay bastante javascript copiado y pegado cuando tal vez debería haberlo refactorizado para poder reutilizarlo, pero queda poco plazo así que lo dejaré así.
+- El CSS no es paticularmente bonito. ¯\\_(ツ)_/¯ No soy diseñador gráfico.
   

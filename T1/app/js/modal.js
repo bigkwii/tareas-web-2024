@@ -31,6 +31,29 @@ const confirmationModal = (title, message, yes, no) => {
     openModal();
 }
 
+// disgusting code duplication. sorry!
+const confirmationModalPedido = (title, message, yes, no) => {
+    clearModal();
+    writeOnModal(title, message);
+    const yesButton = document.createElement("button");
+    yesButton.classList.add("btn");
+    yesButton.innerText = yes;
+    yesButton.onclick = () => {
+        closeModal();
+        finishModal("Hemos recibido su pedido", "Muchas gracias!");
+    };
+    const noButton = document.createElement("button");
+    noButton.classList.add("btn");
+    noButton.innerText = no;
+    noButton.onclick = () => {
+        closeModal();
+    };
+    modalMessage.appendChild(document.createElement("br"));
+    modalMessage.appendChild(yesButton);
+    modalMessage.appendChild(noButton);
+    openModal();
+}
+
 const finishModal = (title, message) => {
     clearModal();
     writeOnModal(title, message);

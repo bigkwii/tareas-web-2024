@@ -277,37 +277,37 @@ p {
 }
 
 /* VER PRODUCTOS */
-.productos-container {
+.productos-table {
     font-size: 1.5rem;
     margin: auto;
     width: 80%;
     border-spacing: 0;
 }
 
-.productos-container td, th {
+.productos-table td, th {
     border: 2px solid rgb(0, 50, 0);
     padding: 0.5rem;
 }
 
-.productos-container tr {
+.productos-table tr {
     background-color: darkgreen;
 }
 
-.productos-container tr:nth-child(even) {
+.productos-table tr:nth-child(even) {
     background-color: darkolivegreen;
 }
 
-.productos-container tr:first-child {
+.productos-table tr:first-child {
     background-color: green;
 }
 
-.productos-container tr:hover:not(:first-child){
+.productos-table tr:hover:not(:first-child){
     background-color: rgb(0, 60, 0);
     color: lightgreen;
     cursor: pointer;
 }
 
-.productos-container img{
+.productos-table img{
     width: 120px;
     height: 120px;
     object-fit: fill;
