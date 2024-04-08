@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a href="index.html" class="btn">&lt-Inicio</a>
+        <a href="index.html" class="btn">&lt;-Inicio</a>
     </div>
     <h1>Agregar Producto</h1>
-    <form method="post" action id="form-agregar-producto" class="submit-form" enctype="multipart/form-data">
+    <form method="post" id="form-agregar-producto" class="submit-form" enctype="multipart/form-data">
 
         <p>Tipo de producto:</p>
         
@@ -28,7 +28,7 @@
         </label>
 
         <p>Elegir productos (mínimo 1, máximo 5):</p>
-        <div name="productos" id="productos" class="productos-container"></div>
+        <div id="productos" class="productos-container"></div>
 
         <p>Descripción (opcional):</p>
         <textarea name="description" id="description" rows="4" cols="50" maxlength="200" placeholder="Poner descripción aquí..." spellcheck="true"></textarea>
@@ -83,6 +83,7 @@
             <h2 id="modal-title">Title</h2>
             <p id="modal-message">Some text in the Modal..</p>
         </div>
+    </div>
 
     <script src="js/modal.js"></script>
     <script src="js/agregar-producto.js"></script>
