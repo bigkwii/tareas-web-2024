@@ -21,6 +21,17 @@ def index():
 
 @app.route("/agregar-producto", methods=["GET", "POST"])
 def agregar_producto():
+    # request to add a product
+    if request.method == "POST";
+        tipo = request.form.get("tipo")
+        descripcion = request.form.get("descripcion")
+        comuna_id = request.form.get("comuna_id")
+        nombre_productor = request.form.get("nombre_productor")
+        email_productor = request.form.get("email_productor")
+        celular_productor = request.form.get("celular_productor")
+        error = ""
+    # TODO
+
     return render_template("agregar-producto.html")
 
 @app.route("/ver-productos", methods=["GET"])
