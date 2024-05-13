@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Información Producto {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('ver_productos') }}" class="btn">&lt;-Ver Productos</a>
+    </div>
+    <h1>Información del Producto:</h1>
+    <div id="info-container" class="info-container"></div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/informacion-producto.js') }}"></script>
+{% endblock %}

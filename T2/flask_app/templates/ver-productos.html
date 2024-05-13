@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Ver Productos {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
+    </div>
+    <h1>Ver Productos</h1>
+    <!-- Add products dynamically -->
+    <table id="productos" class="productos-table">
+        <tr>
+            <th>Tipo:</th>
+            <th>Producto(s):</th>
+            <th>Región:</th>
+            <th>Comuna:</th>
+            <th>Fotos:</th>
+        </tr>
+    </table>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/ver-productos.js') }}"></script>
+{% endblock %}
