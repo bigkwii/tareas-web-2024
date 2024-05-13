@@ -61,7 +61,7 @@ const finishModal = (title, message) => {
     goBackAnchor.classList.add("btn");
     goBackAnchor.style.font = "1rem sans-serif";
     goBackAnchor.innerText = "Volver al inicio";
-    goBackAnchor.href = "index.html";
+    goBackAnchor.href = "/";
     modalMessage.appendChild(document.createElement("br"));
     modalMessage.appendChild(goBackAnchor);
     openModal();

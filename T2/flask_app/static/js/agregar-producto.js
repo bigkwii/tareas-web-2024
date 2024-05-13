@@ -183,7 +183,7 @@ const validateProducts = () => {
 const validateDescription = () => {
     const description = document.getElementById("description").value;
     // console.log("description: ", description);
-    if (description.length > 0 && description.length > 200) {
+    if ((description.trim()).length > 0 && description.length > 200) {
         return [false, "La descripción debe tener no más de 200 caracteres."];
     }
     return [true, ""];
@@ -226,10 +226,8 @@ const validateComuna = () => {
 // make sure the user added his name and that it's less than 80 chars
 const validateProductor = () => {
     const name = document.getElementById("productor").value;
-    // strip blank spaces
-    name = name.replace(/\s/g, '');
     // console.log("productor: ", name);
-    if (!name || name.length > 80) {
+    if (!(name.trim()) || name.length > 80) {
         return [false, "El nombre del productor no puede estar vacío y debe tener menos de 80 caracteres"];
     }
     return [true, ""];
