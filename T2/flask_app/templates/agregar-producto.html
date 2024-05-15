@@ -36,22 +36,9 @@
         <p>Regíon:</p>
         <select name="region" id="region" onchange="displayComunas(this.value)" class="dropdown">
             <option selected value="default" disabled>--</option>
-            <option value="I">I - Tarapacá</option>
-            <option value="II">II - Antofagasta</option>
-            <option value="III">III - Atacama</option>
-            <option value="IV">IV - La Serena</option>
-            <option value="V">V - Valparaíso</option>
-            <option value="VI">VI - O'Higgins</option>
-            <option value="VII">VII - Maule</option>
-            <option value="VIII">VIII - Biobío</option>
-            <option value="IX">IX - Araucanía</option>
-            <option value="X">X - Los Lagos</option>
-            <option value="XI">XI - Aysén</option>
-            <option value="XII">XII - Magallanes</option>
-            <option value="RM">RM - Metropolitana</option>
-            <option value="XIV">XIV - Los Ríos</option>
-            <option value="XV">XV - Arica y Parinacota</option>
-            <option value="XVI">XVI - Ñuble</option>
+            {% for region in data.regiones %}
+                <option value="{{ region.id }}">{{ region.nombre }}</option>
+            {% endfor %}
         </select>
         
         <p>Comuna:</p>
@@ -82,6 +69,14 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/agregar-producto.js') }}"></script>
+    <!-- This isn't a pretty way to do it. what i should've done is have all the data loaded and hidden... -->
+    <!-- ...to be un-hidden dynamically by the javascript as it's needed, but this implementation...       -->
+    <!-- ...lets me change less code from T1. You'll just have to deal with VSCode red squigglies, sorry!  -->
+    <script lang="javascript">
+        const frutas = {{data.frutas|tojson}};
+        const verduras = {{data.verduras|tojson}};
+        const regiones = {{data.regiones|tojson}};
+    </script>
+    <script lang="javascript" src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    <script lang="javascript" src="{{ url_for('static', filename='js/agregar-producto.js') }}"></script>
 {% endblock %}

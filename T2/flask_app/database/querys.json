@@ -1,0 +1,16 @@
+{
+    "get_producto_by_id": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto WHERE id=%s;",
+    "get_producto_images": "SELECT ruta_archivo, nombre_archivo FROM foto WHERE producto_id=%s;",
+    "add_producto": "INSERT INTO producto (tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor) VALUES (%s, %s, %s, %s, %s, %s);",
+    "add_producto_image": "INSERT INTO foto (ruta_archivo, nombre_archivo, producto_id) VALUES (%s, %s, %s);",
+    "get_regiones": "SELECT id, nombre FROM region;",
+    "get_comunas_by_region": "SELECT id, nombre FROM comuna WHERE region_id=%s;",
+    "get_n_productos": "SELECT id, tipo, descripcion, comuna_id, nombre_productor, email_productor, celular_productor FROM producto ORDER BY id DESC LIMIT %s, %s;",
+    "get_last_inserted_id": "SELECT LAST_INSERT_ID();",
+    "get_most_recent_producto_id": "SELECT id FROM producto ORDER BY id DESC LIMIT 1;",
+    "get_all_frutas": "SELECT id, nombre FROM tipo_verdura_fruta ORDER BY id LIMIT 0, 37;",
+    "get_all_verduras": "SELECT id, nombre FROM tipo_verdura_fruta ORDER BY id LIMIT 37, 61;",
+    "get_all_frutas_verduras": "SELECT id, nombre FROM tipo_verdura_fruta ORDER BY id;",
+    "get_tipos_verdura_producto": "SELECT TVF.nombre FROM tipo_verdura_fruta TVF, producto_verdura_fruta PVF WHERE TVF.id=PVF.tipo_verdura_fruta_id AND PVF.producto_id=%s;",
+    "add_tipo_verdura_producto": "INSERT INTO producto_verdura_fruta (producto_id, tipo_verdura_fruta_id) VALUES (%s,%s);"
+}

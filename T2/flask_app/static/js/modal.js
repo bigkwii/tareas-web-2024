@@ -17,7 +17,7 @@ const confirmationModal = (title, message, yes, no) => {
     yesButton.innerText = yes;
     yesButton.onclick = () => {
         closeModal();
-        finishModal("Hemos recibido el registro de producto.", "Muchas gracias!");
+        submitForm(); // SUBMIT FORM
     };
     const noButton = document.createElement("button");
     noButton.classList.add("btn");

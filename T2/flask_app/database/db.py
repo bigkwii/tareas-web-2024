@@ -81,6 +81,13 @@ def get_last_inserted_id():
     last_id = cursor.fetchone()
     return last_id
 
+def get_most_recent_producto_id():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_most_recent_producto_id"])
+    most_recent_id = cursor.fetchone()
+    return most_recent_id
+
 def get_all_frutas():
     conn = get_conn()
     cursor = conn.cursor()

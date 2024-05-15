@@ -4,97 +4,6 @@ const verdurasContainer = document.getElementById("verduras-container");
 const productosContainer = document.getElementById("productos")
 const selectComuna = document.getElementById("comuna");
 
-// -- consts --
-// fruits
-const frutas = ["Arándano", "Frambuesa", "Frutilla", "Grosella", "Mora", "Limón", "Mandarina", "Naranja", "Pomelo", "Melón", "Sandía", "Palta", "Chirimoya", "Coco", "Dátil", "Kiwi", "Mango", "Papaya", "Piña", "Plátano", "Damasco", "Cereza", "Ciruela", "Higo", "Kaki", "Manzana", "Durazno", "Nectarin", "Níspero", "Pera", "Uva", "Almendra", "Avellana", "Maní", "Castaña", "Nuez", "Pistacho"];
-// vegetables
-const verduras = ["Brócoli", "Repollo", "Coliflor", "Rábano", "Alcachofa", "Lechuga", "Zapallo", "Pepino", "Haba", "Maíz", "Champiñón", "Acelga", "Apio", "Espinaca", "Perejil", "Ajo", "Cebolla", "Espárrago", "Puerro", "Acelga", "Espinaca", "Remolacha", "Berenjena", "Papa", "Pimiento", "Tomate", "Zanahoria"];
-// region to comunas object
-region_to_comunas = {
-    "regiones": [
-        {
-            "region": "Arica y Parinacota",
-            "roman": "XV",
-            "comunas": ["Arica", "Camarones", "Putre", "General Lagos"]
-        },
-        {
-            "region": "Tarapacá",
-            "roman": "I",
-            "comunas": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"]
-        },
-        {
-            "region": "Antofagasta",
-            "roman": "II",
-            "comunas": ["Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena"]
-        },
-        {
-            "region": "Atacama",
-            "roman": "III",
-            "comunas": ["Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco"]
-        },
-        {
-            "region": "Coquimbo",
-            "roman": "IV",
-            "comunas": ["La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado"]
-        },
-        {
-            "region": "Valparaíso",
-            "roman": "V",
-            "comunas": ["Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana"]
-        },
-        {
-            "region": "Región del Libertador Gral. Bernardo O’Higgins",
-            "roman": "VI",
-            "comunas": ["Rancagua", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "Las Cabras", "Machalí", "Malloa", "Mostazal", "Olivar", "Peumo", "Pichidegua", "Quinta de Tilcoco", "Rengo", "Requínoa", "San Vicente", "Pichilemu", "La Estrella", "Litueche", "Marchihue", "Navidad", "Paredones", "San Fernando", "Chépica", "Chimbarongo", "Lolol", "Nancagua", "Palmilla", "Peralillo", "Placilla", "Pumanque", "Santa Cruz"]
-        },
-        {
-            "region": "Región del Maule",
-            "roman": "VII",
-            "comunas": ["Talca", "Constitución", "Curepto", "Empedrado", "Maule", "Pelarco", "Pencahue", "Río Claro", "San Clemente", "San Rafael", "Cauquenes", "Chanco", "Pelluhue", "Curicó", "Hualañé", "Licantén", "Molina", "Rauco", "Romeral", "Sagrada Familia", "Teno", "Vichuquén", "Linares", "Colbún", "Longaví", "Parral", "Retiro", "San Javier", "Villa Alegre", "Yerbas Buenas"]
-        },
-        {
-            "region": "Región de Ñuble",
-            "roman": "XVI",
-            "comunas": ["Cobquecura", "Coelemu", "Ninhue", "Portezuelo", "Quirihue", "Ránquil", "Treguaco", "Bulnes", "Chillán Viejo", "Chillán", "El Carmen", "Pemuco", "Pinto", "Quillón", "San Ignacio", "Yungay", "Coihueco", "Ñiquén", "San Carlos", "San Fabián", "San Nicolás"]
-        },
-        {
-            "region": "Región del Biobío",
-            "roman": "VIII",
-            "comunas": ["Concepción", "Coronel", "Chiguayante", "Florida", "Hualqui", "Lota", "Penco", "San Pedro de la Paz", "Santa Juana", "Talcahuano", "Tomé", "Hualpén", "Lebu", "Arauco", "Cañete", "Contulmo", "Curanilahue", "Los Álamos", "Tirúa", "Los Ángeles", "Antuco", "Cabrero", "Laja", "Mulchén", "Nacimiento", "Negrete", "Quilaco", "Quilleco", "San Rosendo", "Santa Bárbara", "Tucapel", "Yumbel", "Alto Biobío"]
-        },
-        {
-            "region": "Región de la Araucanía",
-            "roman": "IX",
-            "comunas": ["Temuco", "Carahue", "Cunco", "Curarrehue", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Saavedra", "Teodoro Schmidt", "Toltén", "Vilcún", "Villarrica", "Cholchol", "Angol", "Collipulli", "Curacautín", "Ercilla", "Lonquimay", "Los Sauces", "Lumaco", "Purén", "Renaico", "Traiguén", "Victoria"]
-        },
-        {
-            "region": "Región de Los Ríos",
-            "roman": "XIV",
-            "comunas": ["Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno"]
-        },
-        {
-            "region": "Región de Los Lagos",
-            "roman": "X",
-            "comunas": ["Puerto Montt", "Calbuco", "Cochamó", "Fresia", "Frutillar", "Los Muermos", "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi", "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi", "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro", "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué", "Palena"]
-        },
-        {
-            "region": "Región Aisén del Gral. Carlos Ibáñez del Campo",
-            "roman": "XI",
-            "comunas": ["Coihaique", "Lago Verde", "Aisén", "Cisnes", "Guaitecas", "Cochrane", "O’Higgins", "Tortel", "Chile Chico", "Río Ibáñez"]
-        },
-        {
-            "region": "Región de Magallanes y de la Antártica Chilena",
-            "roman": "XII",
-            "comunas": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "Antártica", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
-        },
-        {
-            "region": "Región Metropolitana de Santiago",
-            "roman": "RM",
-            "comunas": ["Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "Santiago", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "Tiltil", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor"]
-         }
-    ]
-}
-
 // -- functions --
 // display a bunch of checkboxes depending on the given type
 const displayCheckboxes = (type) => {
@@ -111,15 +20,15 @@ const displayCheckboxes = (type) => {
     product_list.forEach(product => {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.name = type;
-        checkbox.value = product;
-        checkbox.id = product;
+        checkbox.name = "productos";
+        checkbox.value = product.id;
+        checkbox.id = product.id;
         checkbox.onclick = () => checkLimit(checkbox);
         const span = document.createElement("span");
         span.classList.add("checkbox-checkmark");
         const label = document.createElement("label");
-        label.htmlFor = product;
-        label.appendChild(document.createTextNode(product));
+        label.htmlFor = product.id;
+        label.appendChild(document.createTextNode(product.nombre));
         label.appendChild(checkbox);
         label.appendChild(span);
         label.classList.add("checkbox-container");
@@ -138,9 +47,9 @@ const checkLimit = (checkbox) => {
 }
 
 // display the comunas depending on the selected region
-const displayComunas = (roman) => {
-    // go get the correct list of comunas from the region_to_comunas object
-    const comunas = region_to_comunas.regiones.find(region => region.roman === roman).comunas;
+const displayComunas = (region_index) => {
+    // find the element in the regiones array 
+    const comunas = regiones[region_index - 1].comunas;
     // remove all options from the comuna select
     selectComuna.innerHTML = "";
     // add the default option
@@ -151,8 +60,8 @@ const displayComunas = (roman) => {
     // add the comunas options
     comunas.forEach(comuna => {
         const option = document.createElement("option");
-        option.value = comuna;
-        option.innerText = comuna;
+        option.value = comuna.id;
+        option.innerText = comuna.nombre;
         selectComuna.appendChild(option);
     });
 }
@@ -183,7 +92,7 @@ const validateProducts = () => {
 const validateDescription = () => {
     const description = document.getElementById("description").value;
     // console.log("description: ", description);
-    if ((description.trim()).length > 0 && description.length > 200) {
+    if ((description.trim()).length > 0 && (description.trim()).length > 200) {
         return [false, "La descripción debe tener no más de 200 caracteres."];
     }
     return [true, ""];
@@ -227,7 +136,7 @@ const validateComuna = () => {
 const validateProductor = () => {
     const name = document.getElementById("productor").value;
     // console.log("productor: ", name);
-    if (!(name.trim()) || name.length > 80) {
+    if (!(name.trim()) || (name.trim()).length > 80) {
         return [false, "El nombre del productor no puede estar vacío y debe tener menos de 80 caracteres"];
     }
     return [true, ""];
@@ -284,3 +193,49 @@ const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", () => {
     validateForm();
 });
+
+// -- submit form --
+// gets called by modal (not clean, i know, but it's a quick hack)
+const submitForm = () => {
+    console.log("submitting form...");
+    // get all the relevante data into a FormData object
+    const formData = new FormData();
+    const selectedType = document.querySelector("input[name='tipo']:checked").value;
+    const checkedCheckboxes = document.querySelectorAll("input[type='checkbox']:checked");
+    const selectedProducts = Array.from(checkedCheckboxes).map(checkbox => checkbox.value);
+    const description = document.getElementById("description").value;
+    const region = document.getElementById("region").value;
+    const comuna = document.getElementById("comuna").value;
+    const productor = document.getElementById("productor").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const image1 = document.getElementById("image1").files[0];
+    const image2 = document.getElementById("image2").files[0];
+    const image3 = document.getElementById("image3").files[0];
+    formData.append("tipo", selectedType);
+    formData.append("productos", selectedProducts);
+    formData.append("description", description);
+    formData.append("region", region);
+    formData.append("comuna", comuna);
+    formData.append("productor", productor);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("image1", image1);
+    formData.append("image2", image2);
+    formData.append("image3", image3);
+    // submit the form
+    fetch("/agregar-producto", {
+        method: "POST",
+        body: formData
+    }).then(response => {
+        console.log("response: ", response);
+        if (response.ok) {
+            finishModal("Hemos recibido el registro de producto.", "Muchas gracias!");
+        } else {
+            alertModal("Error!", "Hubo un error al enviar el formulario. Inténtelo de nuevo más tarde.");
+        }
+    });
+}
+
+// finishModal("Hemos recibido el registro de producto.", "Muchas gracias!"
+// alertModal("Error!", "Hubo un error al enviar el formulario. Inténtelo de nuevo más tarde.")

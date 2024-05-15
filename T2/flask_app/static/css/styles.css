@@ -63,6 +63,16 @@ p {
     text-decoration: none;
 }
 
+.btn-disabled {
+    background-color: gray;
+    color: #000;
+    border: 5px solid green;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    pointer-events: none;
+    text-decoration: none;
+}
+
 .btn:hover {
     background-color: green;
     color: #fff;
