@@ -26,26 +26,26 @@
             <p>Email: {{producto.email}}</p>
             <p>Teléfono: {{producto.phone}}</p>
         </div>
+    {% for imagen in producto.imagenes%}
         <div class="img-container">
-            <img id="producto-img-small" src="{{ url_for('static', filename=producto.small_path) }}" alt="imagen" class="img-thumbnail" width="640" height="480">
-            <img id="producto-img-full" src="{{ url_for('static', filename=producto.full_path) }}" alt="imagen" class="img-expanded" width="1280" height="1024" hidden>
+            <img id="producto-img-small" src="{{ url_for('static', filename='uploads/small/'+imagen) }}" alt="imagen" class="img-thumbnail" width="640" height="480">
+            <img id="producto-img-full" src="{{ url_for('static', filename='uploads/full/'+imagen) }}" alt="imagen" class="img-expanded" width="1280" height="1024" hidden>
         </div>
+    {% endfor %}
     </div>
 {% endblock %}
 
 {% block javascript %}
     <script lang="javascript">
-        let small = document.getElementById('producto-img-small');
-        let full = document.getElementById('producto-img-full');
-        small.addEventListener('click', () => {
-            // on click, hide the visible and show the hidden
-            small.hidden = !small.hidden;
-            full.hidden = !full.hidden;
-        });
-        full.addEventListener('click', () => {
-            // on click, hide the visible and show the hidden
-            small.hidden = !small.hidden;
-            full.hidden = !full.hidden;
-        });
+        // all image containers get a new onclick property where they swap the visibility of their images
+        let imgContainers = document.getElementsByClassName('img-container');
+        for (let i = 0; i < imgContainers.length; i++) {
+            imgContainers[i].onclick = function() {
+                let imgSmall = imgContainers[i].children[0];
+                let imgFull = imgContainers[i].children[1];
+                imgSmall.hidden = !imgSmall.hidden;
+                imgFull.hidden = !imgFull.hidden;
+            }
+        }
     </script>
 {% endblock %}

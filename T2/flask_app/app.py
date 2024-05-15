@@ -177,9 +177,9 @@ def informacion_producto():
     for producto in db.get_tipos_verdura_producto(id_producto):
         _, tipo_nombre = producto
         productos.append(tipo_nombre)
-    _, filename = db.get_producto_images(id_producto)[0]
-    small_path = f"uploads/small/{filename}"
-    full_path = f"uploads/full/{filename}"
+    imagenes = []
+    for _, filename in db.get_producto_images(id_producto):
+        imagenes.append(filename)
     producto = {
         "id": id_producto,
         "tipo": tipo,
@@ -190,8 +190,7 @@ def informacion_producto():
         "email": email_productor,
         "phone": celular_productor,
         "productos": productos,
-        "small_path": small_path,
-        "full_path": full_path
+        "imagenes": imagenes
     }
 
     return render_template("informacion-producto.html", id=id_producto, producto=producto)
