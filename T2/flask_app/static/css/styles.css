@@ -51,6 +51,11 @@ p {
     border: 3px solid green;
 }
 
+.nav-bar .btn-disabled {
+    font: 1.5rem sans-serif;
+    border: 3px solid green;
+}
+
 /* BTN */
 .btn {
     background-color: lightgray;

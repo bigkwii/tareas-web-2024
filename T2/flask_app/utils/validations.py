@@ -44,10 +44,7 @@ def validate_images(image1, image2, image3):
     # only jpg, jpeg and png
     ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
     ALLOWED_MIMETYPES = {"image/jpeg", "image/png"}
-    if image1 is None and image2 is None and image3 is None or \
-        image1.filename == "" and image2.filename == "" and image3.filename == "":
-        print("No images submitted")
-        return False
+    at_least_one_image = False
     images = [image1, image2, image3]
     for image in images:
         if image is None:
@@ -61,6 +58,10 @@ def validate_images(image1, image2, image3):
         if ftype_guess.mime not in ALLOWED_MIMETYPES:
             print("Invalid mime")
             return False
+        at_least_one_image = True
+    if not at_least_one_image:
+        print("No images submitted")
+        return False
     return True
     
 def validate_region(value):

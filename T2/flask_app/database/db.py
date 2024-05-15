@@ -34,6 +34,13 @@ def get_producto_by_id(id):
     product = cursor.fetchone()
     return product
 
+def get_len_productos():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_len_productos"])
+    len_productos = cursor.fetchone()
+    return len_productos
+
 def get_producto_images(id):
     conn = get_conn()
     cursor = conn.cursor()
@@ -60,6 +67,13 @@ def get_regiones():
     regiones = cursor.fetchall()
     return regiones
 
+def get_region_by_id(region_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_region_by_id"], (region_id,))
+    region = cursor.fetchone()
+    return region
+
 def get_comunas_by_region(region_id):
     conn = get_conn()
     cursor = conn.cursor()
@@ -67,11 +81,25 @@ def get_comunas_by_region(region_id):
     comunas = cursor.fetchall()
     return comunas
 
-def get_n_productos(start, end):
+def get_region_by_comuna(comuna_id):
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute(QUERY_DICT["get_n_productos"], (start, end))
-    n_productos = cursor.fetchone()
+    cursor.execute(QUERY_DICT["get_region_by_comuna"], (comuna_id,))
+    region = cursor.fetchone()
+    return region
+
+def get_comuna_by_id(comuna_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_comuna_by_id"], (comuna_id,))
+    comuna = cursor.fetchone()
+    return comuna
+
+def get_productos_limit_offset(limit, offset):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_productos_limit_offset"], (limit, offset))
+    n_productos = cursor.fetchall()
     return n_productos
 
 def get_last_inserted_id():
@@ -109,10 +137,10 @@ def get_all_frutas_verduras():
     frutas_verduras = cursor.fetchall()
     return frutas_verduras
 
-def get_tipos_verdura_producto():
+def get_tipos_verdura_producto(producto_id):
     conn = get_conn()
     cursor = conn.cursor()
-    cursor.execute(QUERY_DICT["get_tipos_verdura_producto"])
+    cursor.execute(QUERY_DICT["get_tipos_verdura_producto"], (producto_id,))
     tipos_verdura = cursor.fetchall()
     return tipos_verdura
 

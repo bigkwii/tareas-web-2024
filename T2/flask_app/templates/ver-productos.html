@@ -5,9 +5,21 @@
 {% block content %}
     <div class="nav-bar">
         <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
+        <div style="margin-left: auto;">
+        {% if PAGE > 1 %}
+            <a href="{{ url_for('ver_productos', page=PAGE-1) }}" class="btn">Anterior</a>
+        {% else %}
+            <a href="{{ url_for('ver_productos', page=PAGE) }}" class="btn-disabled">Anterior</a>
+        {% endif %}
+        {% if PAGE < TOTAL_PAGES %}
+            <a href="{{ url_for('ver_productos', page=PAGE+1) }}" class="btn">Siguiente</a>
+        {% else %}
+            <a href="{{ url_for('ver_productos', page=PAGE) }}" class="btn-disabled">Siguiente</a>
+        {% endif %}
+        </div>
     </div>
     <h1>Ver Productos</h1>
-    <!-- Add products dynamically -->
+    <p style="margin:auto;text-align: center;">Página: {{PAGE}}</p>
     <table id="productos" class="productos-table">
         <tr>
             <th>Tipo:</th>
@@ -16,9 +28,18 @@
             <th>Comuna:</th>
             <th>Fotos:</th>
         </tr>
-    </table>
-{% endblock %}
+    {% for producto in data %}
+        <tr onclick="window.location.href='{{ url_for('informacion_producto', id=producto.id) }}'">
+            <td>{{producto.tipo}}</td>
+            <td>{% for vegetal in producto.productos %} {{vegetal}} {% endfor %} </td>
+            <td>{{producto.region}}</td>
+            <td>{{producto.comuna}}</td>
+            <td>
+                <img src="{{ url_for('static', filename=producto.thumb_path) }}" alt="imagen">
+            </td>
+        </tr>
+    {% endfor %}
 
-{% block javascript %}
-    <script src="{{ url_for('static', filename='js/ver-productos.js') }}"></script>
+    </table>
+    <br><br>
 {% endblock %}
