@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %} Agregar producto {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
+    </div>
+    <h1>Agregar Producto</h1>
+    <form method="post" id="form-agregar-producto" class="submit-form" enctype="multipart/form-data">
+
+        <p>Tipo de producto:</p>
+        
+        <label for="fruta" class="radio-container">
+            Fruta
+            <input type="radio" name="tipo" id="fruta" value="Fruta" onclick="displayCheckboxes(this.value)">
+            <span class="radio-checkmark"></span>
+        </label>
+        <label for="verdura" class="radio-container">
+            Verdura
+            <input type="radio" name="tipo" id="verdura" value="Verdura" onclick="displayCheckboxes(this.value)">
+            <span class="radio-checkmark"></span>
+        </label>
+
+        <p>Elegir productos (mínimo 1, máximo 5):</p>
+        <div id="productos" class="productos-container"></div>
+
+        <p>Descripción (opcional):</p>
+        <textarea name="description" id="description" rows="4" cols="50" maxlength="200" placeholder="Poner descripción aquí..." spellcheck="true"></textarea>
+
+        <p>Insertar Imágenes (mínimo 1, máximo 3):</p>
+        <input type="file" name="image1" id="image1" accept="image/png, image/jpeg">
+        <input type="file" name="image2" id="image2" accept="image/png, image/jpeg">
+        <input type="file" name="image3" id="image3" accept="image/png, image/jpeg">
+
+        <p>Regíon:</p>
+        <select name="region" id="region" onchange="displayComunas(this.value)" class="dropdown">
+            <option selected value="default" disabled>--</option>
+            {% for region in data.regiones %}
+                <option value="{{ region.id }}">{{ region.nombre }}</option>
+            {% endfor %}
+        </select>
+        
+        <p>Comuna:</p>
+        <select name="comuna" id="comuna" class="dropdown">
+            <option selected value="default" disabled>--</option>
+        </select>
+
+        <p>Nombre del Productor:</p>
+        <input type="text" name="productor" id="productor" size="80" maxlength="80" placeholder="...">
+
+        <p>E-Mail:</p>
+        <input type="text" name="email" id="email" size="30" maxlength="30" placeholder="...">
+
+        <p>Teléfono (opcional):</p>
+        <input type="text" name="phone" id="phone" size="15" maxlength="15" placeholder="+569...">
+
+        <button type="button" class="btn" id="submit-btn">Agregar Producto</button>
+    </form>
+    <br><br>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Title</h2>
+            <p id="modal-message">Some text in the Modal..</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <!-- This isn't a pretty way to do it. what i should've done is have all the data loaded and hidden... -->
+    <!-- ...to be un-hidden dynamically by the javascript as it's needed, but this implementation...       -->
+    <!-- ...lets me change less code from T1. You'll just have to deal with VSCode red squigglies, sorry!  -->
+    <script lang="javascript">
+        const frutas = {{data.frutas|tojson}};
+        const verduras = {{data.verduras|tojson}};
+        const regiones = {{data.regiones|tojson}};
+    </script>
+    <script lang="javascript" src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    <script lang="javascript" src="{{ url_for('static', filename='js/agregar-producto.js') }}"></script>
+{% endblock %}

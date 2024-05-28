@@ -1,0 +1,368 @@
+body {
+    background-color: black;
+    color: #fff;
+    font: 2rem sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    background-image: url("/static/assets/background/lettucedark.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+a {
+    color: cyan;
+    transition: 200ms;
+}
+
+a:hover {
+    color: cornflowerblue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+    text-align: center;
+    outline-color: #000;
+    outline-width: 2px;
+}
+
+p {
+    color: #fff;
+    outline-color: #000;
+    outline-width: 2px;
+}
+
+/* NAV_BAR */
+.nav-bar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    border-bottom: #000 5px solid;
+    position: sticky;
+    top: 0;
+}
+
+.nav-bar .btn {
+    font: 1.5rem sans-serif;
+    border: 3px solid green;
+}
+
+.nav-bar .btn-disabled {
+    font: 1.5rem sans-serif;
+    border: 3px solid green;
+}
+
+/* BTN */
+.btn {
+    background-color: lightgray;
+    color: #000;
+    border: 5px solid green;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: 200ms;
+    text-decoration: none;
+}
+
+.btn-disabled {
+    background-color: gray;
+    color: #000;
+    border: 5px solid green;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: green;
+    color: #fff;
+}
+
+/* INDEX MENU */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .menu-section {
+        flex-direction: column;
+    }
+}
+
+/* FORM */
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* make sure every element is contained within the viewport */
+@media only screen and (max-width: 700px) {
+    .submit-form {
+        width: 100%;
+    }
+    .submit-form input {
+        max-width: 100%;
+    }
+    .submit-form textarea {
+        max-width: 100%;
+    }
+}
+
+/* RADIO BUTTONS */
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio-container:hover input ~ .radio-checkmark {
+    background-color: #ccc;
+}
+
+.radio-container input:checked ~ .radio-checkmark {
+    background-color: #2196F3;
+}
+
+.radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input:checked ~ .radio-checkmark:after {
+    display: block;
+}
+
+.radio-container .radio-checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* CHECKMARKS */
+
+.checkbox-container {
+    display: grid;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.checkbox-container:hover input ~ .checkbox-checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkbox-checkmark {
+    background-color: #2196F3;
+}
+
+.checkbox-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkbox-checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkbox-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    padding-top: 5rem;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: darkolivegreen;
+    margin: auto;
+    padding: 1rem;
+    border: 5px solid green;
+    width: 80%;
+}
+
+.modal-content p {
+    text-align: center;
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: greenyellow;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        font-size: 1rem;
+    }
+}
+
+/* VER PRODUCTOS */
+.productos-table {
+    font-size: 1.5rem;
+    margin: auto;
+    width: 80%;
+    border-spacing: 0;
+}
+
+.productos-table td, th {
+    border: 2px solid rgb(0, 50, 0);
+    padding: 0.5rem;
+}
+
+.productos-table tr {
+    background-color: darkgreen;
+}
+
+.productos-table tr:nth-child(even) {
+    background-color: darkolivegreen;
+}
+
+.productos-table tr:first-child {
+    background-color: green;
+}
+
+.productos-table tr:hover:not(:first-child){
+    background-color: rgb(0, 60, 0);
+    color: lightgreen;
+    cursor: pointer;
+}
+
+.productos-table img{
+    width: 120px;
+    height: 120px;
+    object-fit: fill;
+}
+
+/* INFO PRODUCTO */
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.text-container {
+    margin: auto;
+    margin-top: 0;
+}
+
+.fotos-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 0;
+}
+
+.fotos-container img {
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.fotos-container .img-thumbnail {
+    width: 640px;
+    height: 480px;
+    object-fit: fill;
+}
+
+.fotos-container .img-expanded {
+    width: 1280px;
+    height: 1024px;
+    object-fit: fill;
+}
+

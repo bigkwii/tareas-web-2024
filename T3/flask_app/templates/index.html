@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Hoy no se fía, mañana sí {% endblock %}
+
+{% block content %}
+    <h1>Bienvenid@ a funaos verduras 2.0</h1>
+    <div class="menu-container">
+        <div>
+            <h2> Productos </h2>
+            <div class="menu-section">
+                <a href="{{ url_for('agregar_producto') }}" class="btn">Agregar Producto</a>
+                <a href="{{ url_for('ver_productos') }}" class="btn">Ver Productos</a>
+            </div>
+        </div>
+        <div>
+            <h2> Pedidos </h2>
+            <div class="menu-section">
+                <!-- COMING SOON -->
+                <a href="/agregar-pedido" class="btn-disabled">Agregar Pedido</a>
+                <a href="/ver-pedidos" class="btn-disabled">Ver Pedidos</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>

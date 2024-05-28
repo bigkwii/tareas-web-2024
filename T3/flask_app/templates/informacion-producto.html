@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %} Información Producto {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('ver_productos') }}" class="btn">&lt;-Ver Productos</a>
+    </div>
+    <h1>Información del Producto:</h1>
+    <div id="info-container" class="info-container">
+        <div class="text-container">
+            <p>Tipo: {{producto.tipo}}</p>
+            <p>Producto(s):{% for vegetal in producto.productos %}
+                                <br> - {{vegetal}}
+                            {% endfor %}
+            </p>
+            <p>Región: {{producto.region}}</p>
+            <p>Comuna: {{producto.comuna}}</p>
+            <p>Descripción: {% if producto.descripcion != '' %}
+                                {{producto.descripcion}}
+                            {% else %}
+                                Sin Descipción
+                            {% endif %}
+            </p>
+            <p>Productor: {{producto.productor}}</p>
+            <p>Email: {{producto.email}}</p>
+            <p>Teléfono: {{producto.phone}}</p>
+        </div>
+    {% for imagen in producto.imagenes%}
+        <div class="img-container">
+            <img id="producto-img-small" src="{{ url_for('static', filename='uploads/small/'+imagen) }}" alt="imagen" class="img-thumbnail" width="640" height="480">
+            <img id="producto-img-full" src="{{ url_for('static', filename='uploads/full/'+imagen) }}" alt="imagen" class="img-expanded" width="1280" height="1024" hidden>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script lang="javascript">
+        // all image containers get a new onclick property where they swap the visibility of their images
+        let imgContainers = document.getElementsByClassName('img-container');
+        for (let i = 0; i < imgContainers.length; i++) {
+            imgContainers[i].onclick = function() {
+                let imgSmall = imgContainers[i].children[0];
+                let imgFull = imgContainers[i].children[1];
+                imgSmall.hidden = !imgSmall.hidden;
+                imgFull.hidden = !imgFull.hidden;
+            }
+        }
+    </script>
+{% endblock %}

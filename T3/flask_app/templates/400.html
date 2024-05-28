@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} 404 - Página no encontrada {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
+    </div>
+    <h1>😡400😡</h1>
+    <h2> Bad Request </h2>
+    <h3> ¿Qué intentabas hacer, pillín? </h3>
+{% endblock %}
