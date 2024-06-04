@@ -3,7 +3,7 @@
 {% block title %} Hoy no se fía, mañana sí {% endblock %}
 
 {% block content %}
-    <h1>Bienvenid@ a funaos verduras 2.0</h1>
+    <h1>Bienvenid@ a funaos verduras 3.0</h1>
     <div class="menu-container">
         <div>
             <h2> Productos </h2>
@@ -15,12 +15,18 @@
         <div>
             <h2> Pedidos </h2>
             <div class="menu-section">
-                <!-- COMING SOON -->
-                <a href="/agregar-pedido" class="btn-disabled">Agregar Pedido</a>
-                <a href="/ver-pedidos" class="btn-disabled">Ver Pedidos</a>
+                <a href="/agregar-pedido" class="btn">Agregar Pedido</a>
+                <a href="/ver-pedidos" class="btn">Ver Pedidos</a>
+            </div>
+        </div>
+        <div>
+            <h2> Estadísticas </h2>
+            <div class="menu-section">
+                <a href="/ver-estadisticas" class="btn">Ver Estadísticas</a>
             </div>
         </div>
     </div>
+    <br> <!-- too lazy to change the margins in the css -->
 {% endblock %}
 
 </body>

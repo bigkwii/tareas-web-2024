@@ -195,6 +195,14 @@ def informacion_producto():
 
     return render_template("informacion-producto.html", id=id_producto, producto=producto)
 
+@app.route("/agregar-pedido", methods=["GET", "POST"])
+def agregar_pedido():
+    return render_template("agregar-pedido.html")
+
+@app.route("/ver-pedidos", methods=["GET"])
+def ver_pedidos():
+    return render_template("ver-pedidos.html")
+
 # -- error handling --
 
 @app.errorhandler(400)
