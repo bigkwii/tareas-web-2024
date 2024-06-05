@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Información Producto {% endblock %}
+
+{% block content %}
+    <div class="nav-bar">
+        <a href="{{ url_for('ver_pedidos') }}" class="btn">&lt;-Ver Pedidos</a>
+    </div>
+    <h1>Información del Pedido:</h1>
+    <div id="info-container" class="info-container">
+        <div class="text-container">
+            <p>Tipo: {{pedido.tipo}}</p>
+            <p>Producto(s):{% for vegetal in pedido.productos %}
+                                <br> - {{vegetal}}
+                            {% endfor %}
+            </p>
+            <p>Región: {{pedido.region}}</p>
+            <p>Comuna: {{pedido.comuna}}</p>
+            <p>Descripción: {% if pedido.descripcion != '' %}
+                                {{pedido.descripcion}}
+                            {% else %}
+                                Sin Descipción
+                            {% endif %}
+            </p>
+            <p>Comprador: {{pedido.comprador}}</p>
+            <p>Email: {{pedido.email}}</p>
+            <p>Teléfono: {{pedido.phone}}</p>
+        </div>
+    </div>
+{% endblock %}
+

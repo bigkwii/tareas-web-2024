@@ -262,7 +262,72 @@ def agregar_pedido():
 
 @app.route("/ver-pedidos", methods=["GET"])
 def ver_pedidos():
-    return render_template("ver-pedidos.html")
+    PAGE = request.args.get("page", 1, type=int)
+    PER_PAGE = 5
+    limit = PER_PAGE
+    offset = (PAGE - 1) * PER_PAGE
+    pedidos = db.get_pedidos_limit_offset(limit, offset)
+    len_all_pedidos = db.get_len_pedidos()[0]
+    TOTAL_PAGES = len_all_pedidos // PER_PAGE + (len_all_pedidos % PER_PAGE != 0)
+    if not pedidos:
+        # go back to the last page
+        return redirect(url_for("ver_pedidos", page=TOTAL_PAGES))
+    data = []
+    for pedido in pedidos:
+        pedido_id, tipo, _, comuna_id, nombre_comprador, _, _ = pedido
+        region_id = db.get_region_by_comuna(comuna_id)[0]
+        num_to_roman = { # i want it to look **pretty**
+            1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII",
+            9: "IX", 10: "X", 11: "XI", 12: "XII", 13: "RM", 14: "XIV", 15: "XV", 16: "XVI"
+        }
+        region_nombre = num_to_roman[region_id] + " - " + db.get_region_by_id(region_id)[0]
+        comuna_nombre = db.get_comuna_by_id(comuna_id)[0]
+        productos = []
+        for producto in db.get_tipos_verdura_pedido(pedido_id):
+            _, tipo_nombre = producto
+            productos.append(tipo_nombre)
+
+        data.append({
+            "PAGE": PAGE,
+            "id": pedido_id,
+            "tipo": tipo,
+            "productos": productos,
+            "region": region_nombre,
+            "comuna": comuna_nombre,
+            "comprador": nombre_comprador
+        })
+
+    return render_template("ver-pedidos.html", data=data, PAGE=PAGE, TOTAL_PAGES=TOTAL_PAGES)
+
+@app.route("/informacion-pedido/", methods=["GET"])
+def informacion_pedido():
+    id_pedido = request.args.get("id", None, type=int)
+    if not id_pedido:
+        raise NotFound()
+    pedido = db.get_pedido_by_id(id_pedido)
+    if not pedido:
+        raise NotFound()
+    _, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador = pedido
+    region_id = db.get_region_by_comuna(comuna_id)[0]
+    region_nombre = db.get_region_by_id(region_id)[0]
+    comuna_nombre = db.get_comuna_by_id(comuna_id)[0]
+    productos = []
+    for producto in db.get_tipos_verdura_pedido(id_pedido):
+        _, tipo_nombre = producto
+        productos.append(tipo_nombre)
+    pedido = {
+        "id": id_pedido,
+        "tipo": tipo,
+        "descripcion": descripcion,
+        "region": region_nombre,
+        "comuna": comuna_nombre,
+        "comprador": nombre_comprador,
+        "email": email_comprador,
+        "phone": celular_comprador,
+        "productos": productos,
+    }
+
+    return render_template("informacion-pedido.html", id=id_pedido, pedido=pedido)
 
 # -- error handling --
 

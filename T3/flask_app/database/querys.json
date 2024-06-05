@@ -22,7 +22,7 @@
     "get_most_recent_pedido_id": "SELECT id FROM pedido ORDER BY id DESC LIMIT 1;",
     "get_tipos_verdura_pedido": "SELECT TVF.id, TVF.nombre FROM tipo_verdura_fruta TVF, pedido_verdura_fruta PVF WHERE TVF.id=PVF.tipo_verdura_fruta_id AND PVF.pedido_id=%s;",
     "add_tipo_verdura_pedido": "INSERT INTO pedido_verdura_fruta (pedido_id, tipo_verdura_fruta_id) VALUES (%s,%s);",
-    "get_pedido_by_id": "SELECT id, tipo, descipcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido WHERE id=%s;",
+    "get_pedido_by_id": "SELECT id, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido WHERE id=%s;",
     "get_len_pedidos": "SELECT COUNT(*) FROM pedido;",
-    "get_pedidos_limit_offset": "SELECT id, tipo, descipcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido ORDER BY id DESC LIMIT %s OFFSET %s;"
+    "get_pedidos_limit_offset": "SELECT id, tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador FROM pedido ORDER BY id DESC LIMIT %s OFFSET %s;"
 }
