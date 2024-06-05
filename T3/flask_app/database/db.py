@@ -150,3 +150,49 @@ def add_tipo_verdura_producto(producto_id, tipo_verdura_fruta_id):
     cursor.execute(QUERY_DICT["add_tipo_verdura_producto"], (producto_id, tipo_verdura_fruta_id))
     conn.commit()
 
+def add_pedido(tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["add_pedido"], (tipo, descripcion, comuna_id, nombre_comprador, email_comprador, celular_comprador))
+    conn.commit()
+
+def get_most_recent_pedido_id():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_most_recent_pedido_id"])
+    most_recent_id = cursor.fetchone()
+    return most_recent_id
+
+def get_tipos_verdura_pedido(producto_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_tipos_verdura_pedido"], (producto_id,))
+    tipos_verdura = cursor.fetchall()
+    return tipos_verdura
+
+def add_tipo_verdura_pedido(producto_id, tipo_verdura_fruta_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["add_tipo_verdura_pedido"], (producto_id, tipo_verdura_fruta_id))
+    conn.commit()
+
+def get_pedido_by_id(id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_pedido_by_id"], (id,))
+    pedido = cursor.fetchone()
+    return pedido
+
+def get_len_pedidos():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_len_pedidos"])
+    len_pedidos = cursor.fetchone()
+    return len_pedidos
+
+def get_pedidos_limit_offset(limit, offset):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_pedidos_limit_offset"], (limit, offset))
+    n_pedidos = cursor.fetchall()
+    return n_pedidos

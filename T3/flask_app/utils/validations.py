@@ -95,6 +95,14 @@ def validate_productor(value):
         return False
     return True
 
+def validate_comprador(value):
+    # can't be empty. must have at most 80 characters
+    value_to_be_saved = value.strip()
+    if len(value_to_be_saved) == 0 or len(value_to_be_saved) > 80:
+        print("Invalid comprador")
+        return False
+    return True
+
 def validate_email(value):
     # must pass the regex test and have at most 30 characters
     if len(value) > 30:
@@ -127,6 +135,20 @@ def validate_producto(tipo, selected_products_arr, description, image1, image2, 
         validate_region(region),
         validate_comuna(comuna, region, region_dict),
         validate_productor(productor),
+        validate_email(email),
+        validate_phone(phone)
+    ]
+    return all(validations)
+
+def validate_pedido(tipo, selected_products_arr, description, region, comuna, comprador, email, phone, region_dict, types_dict):
+    # validate all fields
+    validations = [
+        validate_type(tipo),
+        validate_products(selected_products_arr, tipo, types_dict),
+        validate_description(description),
+        validate_region(region),
+        validate_comuna(comuna, region, region_dict),
+        validate_comprador(comprador),
         validate_email(email),
         validate_phone(phone)
     ]
