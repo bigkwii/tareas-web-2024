@@ -24,5 +24,8 @@ python3 app.py
 
 Acá explicaré algunas decisiones de diseño que tomé:
 
-- TODO
+- El código sigue sin ser particualrmente bonito, pero ahora está marginalmente más ordenado.
+- El esquema de la base de datos es exactamente el mismo que la T2, no hay cambios.
+- Los gráficos están hechos con Flot.
+- Decidí no instalar jQuery y Flot directamente, sino que los estoy inclyendo desde un CDN. Así que por favor revisar esto con conexión a internet.
   

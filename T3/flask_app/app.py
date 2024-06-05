@@ -329,6 +329,27 @@ def informacion_pedido():
 
     return render_template("informacion-pedido.html", id=id_pedido, pedido=pedido)
 
+@app.route("/ver-estadisticas", methods=["GET"])
+def ver_estadisticas():
+    return render_template("ver-estadisticas.html")
+
+@app.route("/get-stats-productos", methods=["GET"])
+def get_stats_productos():
+    if request.method == "GET" :
+        # return a json with the percentege of frutas and verduras
+        all_frutas = db.get_all_frutas()
+        all_verduras = db.get_all_verduras()
+        frutas = len(all_frutas)
+        verduras = len(all_verduras)
+        total = frutas + verduras
+        frutas = (frutas / total) * 100
+        verduras = (verduras / total) * 100
+        return {
+            "frutas": frutas,
+            "verduras": verduras
+        }
+    return {}
+
 # -- error handling --
 
 @app.errorhandler(400)

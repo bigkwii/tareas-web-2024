@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Ver Pedidos {% endblock %}
+
+{% block include %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot@4.2.6/dist/es5/jquery.flot.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flot/4.2.6/jquery.flot.pie.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="nav-bar">
+    <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
+</div>
+<h1>Ver Estadísticas</h1>
+
+<div id="test">
+    click me
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script lang="javascript" src="{{ url_for('static', filename='js/ver-estadisticas.js') }}"></script>
+{% endblock %}
