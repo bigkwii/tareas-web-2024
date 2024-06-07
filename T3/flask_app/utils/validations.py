@@ -124,6 +124,11 @@ def validate_phone(value):
         print("Invalid phone")
         return False
     return True
+
+def validate_phone_optional(value):
+    if value == "":
+        return True
+    return validate_phone(value)
     
 def validate_producto(tipo, selected_products_arr, description, image1, image2, image3, region, comuna, productor, email, phone, region_dict, types_dict):
     # validate all fields
@@ -150,6 +155,6 @@ def validate_pedido(tipo, selected_products_arr, description, region, comuna, co
         validate_comuna(comuna, region, region_dict),
         validate_comprador(comprador),
         validate_email(email),
-        validate_phone(phone)
+        validate_phone_optional(phone)
     ]
     return all(validations)

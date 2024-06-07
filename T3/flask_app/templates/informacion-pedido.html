@@ -24,7 +24,12 @@
             </p>
             <p>Comprador: {{pedido.comprador}}</p>
             <p>Email: {{pedido.email}}</p>
-            <p>Teléfono: {{pedido.phone}}</p>
+            <p>Teléfono: {% if pedido.phone != '' %}
+                            {{pedido.phone}}
+                         {% else %}
+                            Sin Número
+                         {% endif %}
+            </p>
         </div>
     </div>
 {% endblock %}

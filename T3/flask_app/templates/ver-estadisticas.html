@@ -6,6 +6,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flot@4.2.6/dist/es5/jquery.flot.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/4.2.6/jquery.flot.pie.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .pieLabel div {
+        font-size: 10rem;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -14,9 +20,35 @@
     <a href="{{ url_for('index') }}" class="btn">&lt;-Inicio</a>
 </div>
 <h1>Ver Estadísticas</h1>
+<p style="text-align:center"> Click en <i class="fa fa-refresh"></i> para cargar datos. Click en los gráficos para más detalles. </p>
 
-<div id="test">
-    click me
+<div class="menu-container">
+    <div>
+        <h3>Stats Productos <i id="load-productos" class="fa fa-refresh btn"></i> </h3>
+        <div class="menu-section">
+            <div id="estadisticas-productos-1" style="width:480; height: 480; min-width:375px; min-height:375px; background-color:darkolivegreen;"></div>
+            <div id="estadisticas-productos-2" style="width:480; height: 480; min-width:375px; min-height:375px; background-color:darkolivegreen;"></div>
+        </div>
+    </div>
+
+    <div>
+        <h3>Stats Pedidos <i id="load-pedidos" class="fa fa-refresh btn"></i> </h3>
+        <h3 id="region-title" style="text-align: center; margin-top: 0; margin-bottom: 0;"></h3>
+        <div class="menu-section">
+            <div id="estadisticas-pedidos" style="width:480px; height:480px; min-width:350px; min-height:350px; background-color:darkolivegreen; margin:auto;"></div>
+        </div>
+        <div id="region-buttons"></div>
+    </div>
+    <br><br>
+
+</div>
+
+<div id="info-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInfoModal()">&times;</span>
+        <h2 id="info-modal-title">Title</h2>
+        <p id="info-modal-message">Some text in the Modal..</p>
+    </div>
 </div>
 
 {% endblock %}

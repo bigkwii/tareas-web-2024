@@ -196,3 +196,45 @@ def get_pedidos_limit_offset(limit, offset):
     cursor.execute(QUERY_DICT["get_pedidos_limit_offset"], (limit, offset))
     n_pedidos = cursor.fetchall()
     return n_pedidos
+
+def get_count_productos_of_tipo(tipo):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_count_productos_of_tipo"], (tipo,))
+    count = cursor.fetchone()
+    return count
+
+def get_count_by_tipo_verdura_fruta_id(tipo_verdura_fruta_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_count_by_tipo_verdura_fruta_id"], (tipo_verdura_fruta_id,))
+    count = cursor.fetchone()
+    return count
+
+def get_count_tipo_verdura_fruta_total():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_count_tipo_verdura_fruta_total"])
+    count = cursor.fetchone()
+    return count
+
+def get_count_pedidos_of_comuna(comuna_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_count_pedidos_of_comuna"], (comuna_id,))
+    count = cursor.fetchone()
+    return count
+
+def get_all_comunas():
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_all_comunas"])
+    comunas = cursor.fetchall()
+    return comunas
+
+def get_count_pedidos_of_region(region_id):
+    conn = get_conn()
+    cursor = conn.cursor()
+    cursor.execute(QUERY_DICT["get_count_pedidos_of_region"], (region_id,))
+    count = cursor.fetchone()
+    return count

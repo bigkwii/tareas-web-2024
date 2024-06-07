@@ -336,17 +336,39 @@ def ver_estadisticas():
 @app.route("/get-stats-productos", methods=["GET"])
 def get_stats_productos():
     if request.method == "GET" :
-        # return a json with the percentege of frutas and verduras
-        all_frutas = db.get_all_frutas()
-        all_verduras = db.get_all_verduras()
-        frutas = len(all_frutas)
-        verduras = len(all_verduras)
-        total = frutas + verduras
-        frutas = (frutas / total) * 100
-        verduras = (verduras / total) * 100
+        # get the amount of frutas and verduras
+        count_all_frutas_productos = db.get_count_productos_of_tipo("fruta")[0]
+        count_all_verduras_productos = db.get_count_productos_of_tipo("verdura")[0]
+        frutas_vs_verduras = {
+            "frutas": count_all_frutas_productos,
+            "verduras": count_all_verduras_productos
+        }
+        # get the amount of every product
+        every_verdura_fruta = {}
+        for verdura_fruta_id, nombre in db.get_all_frutas_verduras():
+            count = db.get_count_by_tipo_verdura_fruta_id(verdura_fruta_id)[0]
+            every_verdura_fruta[nombre] = count
         return {
-            "frutas": frutas,
-            "verduras": verduras
+            "frutas_vs_verduras": frutas_vs_verduras,
+            "every_verdura_fruta": every_verdura_fruta
+        }
+    return {}
+
+@app.route("/get-stats-pedidos", methods=["GET"])
+def get_stats_pedidos():
+    if request.method == "GET" :
+        # get the amount of pedidos by comuna
+        counts_by_comunas = {}
+        for comuna_id, nombre, region_id in db.get_all_comunas():
+            count = db.get_count_pedidos_of_comuna(comuna_id)[0]
+            counts_by_comunas[nombre] = [count, region_id] # keep track of the region for coloring
+        counts_by_region = {}
+        for region_id, nombre in db.get_regiones():
+            count = db.get_count_pedidos_of_region(region_id)[0]
+            counts_by_region[nombre] = count
+        return {
+            "counts_by_comunas": counts_by_comunas,
+            "counts_by_region": counts_by_region
         }
     return {}
 
